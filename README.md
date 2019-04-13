@@ -1,5 +1,11 @@
 # Kustomize plugins
 
+[Kustomize](https://github.com/kubernetes-sigs/kustomize) plugins used at GoAbout.
+
+
+## Running kustomize with plugins
+
+    kustomize build --enable_alpha_goplugins_accept_panic_risk
 
 ## sopsdotenv
 
