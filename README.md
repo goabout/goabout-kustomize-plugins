@@ -14,7 +14,8 @@ Set secret key-values from a sops-encrypted dotenv file.
 
 ### Build
 
-    go build -buildmode plugin -o ~/.config/kustomize/plugins/kvSources/sopsdotenv.so sopsdotenv/main.go
+    OUTDIR=${XDG_CONFIG_HOME:-$HOME/.config}/kustomize/plugins/kvSources
+    go build -buildmode plugin -o $OUTDIR/sopsdotenv.so sopsdotenv/main.go
 
 
 ## Usage
@@ -35,7 +36,8 @@ Create secret entries from sops-encrypted files.
 
 ### Build
 
-    go build -buildmode plugin -o ~/.config/kustomize/plugins/kvSources/sopsfiles.so sopsfiles/main.go
+    OUTDIR=${XDG_CONFIG_HOME:-$HOME/.config}/kustomize/plugins/kvSources
+    go build -buildmode plugin -o $OUTDIR/sopsfiles.so sopsfiles/main.go
 
 
 ## Usage
