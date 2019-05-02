@@ -1,6 +1,5 @@
 FROM golang:stretch AS build
 ENV KUSTOMIZE_VERSION=v0.0.0-20190430182652-0045d7b71604 \
-    KUBECTL_VERSION=1.14.0 \
     GO111MODULE=on
 COPY . /src
 RUN go get sigs.k8s.io/kustomize@$KUSTOMIZE_VERSION && \
@@ -10,6 +9,7 @@ RUN go get sigs.k8s.io/kustomize@$KUSTOMIZE_VERSION && \
     go install
 
 FROM debian:stretch
+ENV KUBECTL_VERSION=v1.14.0
 MAINTAINER tech@goabout.com
 COPY --from=build /go/bin/kustomize /usr/local/bin/
 COPY --from=build /build /root/.config/kustomize/plugin/kvSources
