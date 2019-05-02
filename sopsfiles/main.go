@@ -13,7 +13,7 @@ type sopsFiles struct{}
 var KVSource sopsFiles
 
 func (p *sopsFiles) Get(root string, args []string) (map[string]string, error) {
-	ldr, err := loader.NewLoader(root, fs.MakeRealFS())
+	ldr, err := loader.NewLoader(loader.RestrictionNone, root, fs.MakeRealFS())
 	if err != nil {
 		return nil, err
 	}

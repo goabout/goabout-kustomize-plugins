@@ -12,7 +12,7 @@ type sopsDotEnv struct{}
 var KVSource sopsDotEnv
 
 func (p *sopsDotEnv) Get(root string, args []string) (map[string]string, error) {
-	ldr, err := loader.NewLoader(root, fs.MakeRealFS())
+	ldr, err := loader.NewLoader(loader.RestrictionNone, root, fs.MakeRealFS())
 	if err != nil {
 		return nil, err
 	}
