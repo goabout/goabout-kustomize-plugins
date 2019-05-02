@@ -16,6 +16,6 @@ COPY --from=build /build /root/.config/kustomize/plugin/kvSources
 RUN apt-get update && \
     apt-get install -y gnupg wget && \
     apt-get clean && \
-    rm -f /var/lib/apt/lists/* && \
+    rm -rf /var/lib/apt/lists/* && \
     wget https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl && \
     chmod 755 /usr/local/bin/*
