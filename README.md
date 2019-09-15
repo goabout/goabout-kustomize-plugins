@@ -1,6 +1,9 @@
 # Kustomize plugins
 
-[Kustomize](https://github.com/kubernetes-sigs/kustomize) plugins used at GoAbout.
+[Kustomize](https://github.com/kubernetes-sigs/kustomize) plugins previously used at GoAbout.
+
+**Note: these plugins only work for some older kustomize commits around kustomize 2. For a plugin
+for Kustomize 3+, see [kustomize-sopssecret-plugin](https://github.com/goabout/kustomize-sopssecret-plugin).**
 
 
 ## Running kustomize with plugins
@@ -49,3 +52,16 @@ Create secret entries from sops-encrypted files.
         pluginType: go
         args:
         - somefile.txt=somefile.sops.txt
+
+
+## Docker image
+
+### Building
+
+    docker build -t goabout/goabout-kustomize-plugins .
+
+### Extracting binary and plugins
+
+    cid=$(docker create goabout/k8s-infra-deploy)
+    docker cp $cid:/usr/local/bin/kustomize .
+    docker cp $cid:/root/.config/kustomize/plugin/kvSources ${XDG_CONFIG_HOME:-$HOME/.config}/kustomize/plugin
